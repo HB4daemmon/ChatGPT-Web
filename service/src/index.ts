@@ -17,7 +17,7 @@ app.all('*', (_, res, next) => {
   next()
 })
 
-router.post('/chat-process1', auth, async (req, res) => {
+router.post('/chat-process', auth, async (req, res) => {
   res.setHeader('Content-type', 'application/octet-stream')
 
   try {
@@ -36,7 +36,7 @@ router.post('/chat-process1', auth, async (req, res) => {
   }
 })
 
-router.post('/config1', async (req, res) => {
+router.post('/config', async (req, res) => {
   try {
     const response = await chatConfig()
     res.send(response)
@@ -46,7 +46,7 @@ router.post('/config1', async (req, res) => {
   }
 })
 
-router.post('/session1', async (req, res) => {
+router.post('/session', async (req, res) => {
   try {
     const AUTH_SECRET_KEY = process.env.AUTH_SECRET_KEY
     const hasAuth = isNotEmptyString(AUTH_SECRET_KEY)
@@ -57,7 +57,7 @@ router.post('/session1', async (req, res) => {
   }
 })
 
-router.post('/verify1', async (req, res) => {
+router.post('/verify', async (req, res) => {
   try {
     const { token } = req.body as { token: string }
     if (!token)
